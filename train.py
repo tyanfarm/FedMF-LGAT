@@ -11,7 +11,7 @@ from utils import *
 
 # Training settings
 parser = argparse.ArgumentParser()
-parser.add_argument('--alias', type=str, default='FedMF')
+parser.add_argument('--alias', type=str, default='FedMF-LGAT')
 parser.add_argument('--clients_sample_ratio', type=float, default=1.0)
 parser.add_argument('--clients_sample_num', type=int, default=0)
 parser.add_argument('--num_round', type=int, default=100)
@@ -150,7 +150,7 @@ for round in range(config['num_round']):
         # np.save('model_parameter/' + str(config['ind']) + config['dataset'] + '-' + 'client_param-2.npy', engine.client_model_params)
 
 current_time = datetime.datetime.now().strftime('%Y-%m-%d %H-%M-%S')
-str = current_time + ' - ' + 'num_round: ' + str(config['num_round']) + ' - ' + 'reg: ' + str(config['reg']) + ' - ' + 'l2_regularization: ' + str(config['l2_regularization']) + ' - ' + 'method: ' + config['alias']
+str = current_time + ' - ' + 'num_round: ' + str(config['num_round']) + ' - ' + 'reg: ' + str(config['reg']) + ' - ' + 'l2_regularization: ' + str(config['l2_regularization']) + ' - ' + 'lr: ' + str(config['lr']) + ' - ' + 'threshold: ' + str(config['neighborhood_threshold']) + ' - ' + 'method: ' + config['alias']
 file_name = "sh_result/"+config['construct_graph_source']+'-'+config['dataset']+".txt"
 with open(file_name, 'a') as file:
     file.write(str + '\n')
